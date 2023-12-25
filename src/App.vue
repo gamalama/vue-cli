@@ -1,6 +1,10 @@
 <template>
   <div id="app" class="container mt-5">
     <h1>IDShop</h1>
+    <price-slider
+      :slider-status="sliderStatus"
+      :maximum.sync="maximum"
+    ></price-slider>
     <product-list
       :products="products"
       :maximum="maximum"
@@ -12,17 +16,20 @@
 <script>
 // import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import ProductList from "@/components/ProductList.vue";
+import PriceSlider from "@/components/PriceSlider.vue";
 
 export default {
   name: "App",
   data: function () {
     return {
-      maximum: 20,
+      maximum: 50,
       products: [],
       cart: [],
+      sliderStatus: true,
     };
   },
   components: {
+    PriceSlider,
     ProductList,
     // FontAwesomeIcon,
   },
