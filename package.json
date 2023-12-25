@@ -46,7 +46,11 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "vue/no-mutating-props": ["error", {
+
+      }]
+    }
   },
   "browserslist": [
     "> 1%",

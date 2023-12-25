@@ -1,29 +1,22 @@
 <template>
   <div id="app" class="container mt-5">
-    <h1>IDShop</h1>
-    <navbar-component
+    <products-component
       :cart="cart"
       :cartQty="cartQty"
       :cartTotal="cartTotal"
-      @toggle="toggleSliderStatus"
-      @delete="deleteItem"
-    ></navbar-component>
-    <price-slider
-      :slider-status="sliderStatus"
       :maximum.sync="maximum"
-    ></price-slider>
-    <product-list
       :products="products"
-      :maximum="maximum"
+      :sliderStatus="sliderStatus"
+      @toggle="toggleSliderStatus"
       @add="addItem"
-    ></product-list>
+      @delete="deleteItem"
+    >
+    </products-component>
   </div>
 </template>
 
 <script>
-import ProductList from "@/components/ProductList.vue";
-import PriceSlider from "@/components/PriceSlider.vue";
-import NavbarComponent from "@/components/NavbarComponent.vue";
+import ProductsComponent from "@/components/ProductsComponent.vue";
 
 export default {
   name: "App",
@@ -36,9 +29,7 @@ export default {
     };
   },
   components: {
-    NavbarComponent,
-    PriceSlider,
-    ProductList,
+    ProductsComponent,
   },
   mounted: function () {
     fetch("https://hplussport.com/api/products/order/price")
