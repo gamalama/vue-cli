@@ -1,5 +1,12 @@
 <template>
   <div id="app" class="container mt-5">
+    <checkout-component
+      :cart="cart"
+      :cartQty="cartQty"
+      :cartTotal="cartTotal"
+      @add="addItem"
+      @delete="deleteItem"
+    ></checkout-component>
     <products-component
       :cart="cart"
       :cartQty="cartQty"
@@ -17,6 +24,7 @@
 
 <script>
 import ProductsComponent from "@/components/ProductsComponent.vue";
+import CheckoutComponent from "@/components/CheckoutComponent.vue";
 
 export default {
   name: "App",
@@ -29,6 +37,7 @@ export default {
     };
   },
   components: {
+    CheckoutComponent,
     ProductsComponent,
   },
   mounted: function () {
@@ -61,7 +70,7 @@ export default {
     addItem: function (product) {
       let productIndex;
       let productExist = this.cart.filter(function (item, index) {
-        if (item.product.id === Number(product.id)) {
+        if (item.product.id == Number(product.id)) {
           productIndex = index;
           return true;
         } else {
