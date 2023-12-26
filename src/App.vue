@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: "App",
+  name: "app",
   data: function () {
     return {
       maximum: 50,
@@ -25,10 +25,6 @@ export default {
       cart: [],
       sliderStatus: false,
     };
-  },
-  components: {
-    // CheckoutComponent,
-    // ProductsComponent,
   },
   mounted: function () {
     fetch("https://hplussport.com/api/products/order/price")
