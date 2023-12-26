@@ -13,7 +13,9 @@
       :data-index="index"
     >
       <div class="col-1 m-auto">
-        <button class="btn btn-info" @click="$emit('add-item', item)">+</button>
+        <button class="btn btn-info" @click="$parent.$emit('add', item)">
+          +
+        </button>
       </div>
       <div class="col-sm-4">
         <img :src="item.image" :alt="item.name" class="img-fluid d-block" />
@@ -22,7 +24,10 @@
         <h3 class="text-info">{{ item.name }}</h3>
         <p class="mb-0">{{ item.description }}</p>
         <div class="h5 float-right">
-          <price-component :value="Number(item.price)"></price-component>
+          <price-component
+            :value="Number(item.price)"
+            :precision="2"
+          ></price-component>
         </div>
       </div>
     </div>
@@ -42,7 +47,7 @@ export default {
     showItem: function () {
       let max = this.maximum;
       return this.products.filter(function (item) {
-        return item.price <= max;
+        return Math.trunc(item.price) <= max;
       });
     },
   },

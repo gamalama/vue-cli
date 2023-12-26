@@ -6,7 +6,7 @@
       :cartTotal="cartTotal"
       :maximum.sync="maximum"
       :products="products"
-      :sliderStatus="sliderStatus"
+      :sliderStatus="style.sliderStatus"
       @toggle="toggleSliderStatus"
       @add="addItem"
       @delete="deleteItem"
@@ -23,7 +23,9 @@ export default {
       maximum: 50,
       products: [],
       cart: [],
-      sliderStatus: false,
+      style: {
+        sliderStatus: false,
+      },
     };
   },
   mounted: function () {
@@ -51,7 +53,7 @@ export default {
   },
   methods: {
     toggleSliderStatus: function () {
-      this.sliderStatus = !this.sliderStatus;
+      this.style.sliderStatus = !this.style.sliderStatus;
     },
     addItem: function (product) {
       let productIndex;

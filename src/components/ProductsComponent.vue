@@ -5,18 +5,9 @@
       :cart="cart"
       :cartQty="cartQty"
       :cartTotal="cartTotal"
-      @toggle-slide="toggleSlider"
-      @delete-item="deleteItem"
     ></navbar-component>
-    <price-slider
-      :slider-status="sliderStatus"
-      :maximum.sync="maximum"
-    ></price-slider>
-    <product-list
-      :products="products"
-      :maximum="maximum"
-      @add-item="addItem"
-    ></product-list>
+    <price-slider :slider-status="sliderStatus"></price-slider>
+    <product-list :products="products" :maximum="maximum"></product-list>
   </div>
 </template>
 
@@ -40,17 +31,6 @@ export default {
     NavbarComponent,
     ProductList,
     PriceSlider,
-  },
-  methods: {
-    toggleSlider: function () {
-      this.$emit("toggle");
-    },
-    addItem: function (item) {
-      this.$emit("add", item);
-    },
-    deleteItem: function (index) {
-      this.$emit("delete", index);
-    },
   },
 };
 </script>
