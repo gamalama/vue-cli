@@ -1,13 +1,6 @@
 <template>
   <div id="app" class="container mt-5">
-    <checkout-component
-      :cart="cart"
-      :cartQty="cartQty"
-      :cartTotal="cartTotal"
-      @add="addItem"
-      @delete="deleteItem"
-    ></checkout-component>
-    <products-component
+    <router-view
       :cart="cart"
       :cartQty="cartQty"
       :cartTotal="cartTotal"
@@ -18,14 +11,11 @@
       @add="addItem"
       @delete="deleteItem"
     >
-    </products-component>
+    </router-view>
   </div>
 </template>
 
 <script>
-import ProductsComponent from "@/components/ProductsComponent.vue";
-import CheckoutComponent from "@/components/CheckoutComponent.vue";
-
 export default {
   name: "App",
   data: function () {
@@ -37,8 +27,8 @@ export default {
     };
   },
   components: {
-    CheckoutComponent,
-    ProductsComponent,
+    // CheckoutComponent,
+    // ProductsComponent,
   },
   mounted: function () {
     fetch("https://hplussport.com/api/products/order/price")
